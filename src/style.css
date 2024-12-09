@@ -45,11 +45,6 @@ body {
   font-size: 40px;
   margin-top: 22px;
 }
-.weather-forecast {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
 .weather-forecast-date {
   text-align: center;
   color: rgba(33, 33, 66, 0.4);
@@ -61,25 +56,10 @@ body {
   font-size: 37px;
   text-align: center;
 }
-.weather-forecast-degress {
-  padding: 0 10px;
-}
-.forecast {
-  text-align: center;
-  color: red;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.weather-forecast {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
 .the-main {
   display: flex;
   justify-content: space-between;
+
   padding: 16px;
 }
 
