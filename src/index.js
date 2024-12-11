@@ -17,6 +17,7 @@ function updateWeather(response) {
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
   tempreatureInput.innerHTML = Math.round(temperature);
   emojiElement.innerHTML = `<img src="${response.data.condition.icon_url} "class="weather-app-icon" />`;
+  getTheforecast(response.data.city);
 }
 function formatDate(date) {
   let minutes = date.getMinutes();
@@ -51,7 +52,30 @@ function searchButton(event) {
 
   searchCity(searchIn.value);
 }
+function getTheforecast(city) {
+  let apiKey = "o8c4364da7btfb6f80cb313baf6dceea";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayFive);
+}
+function displayFive(response) {
+  let days = ["tue", "wed", "thu", "fri", "sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+          <div class="weather-forecast-day">
+            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-emoji">😊</div>
+            <div class="forecast">
+              <div class="weather-forecast-degress"><strong>15°</strong></div>
+              <div class="weather-forecast-degress">°5</div>
+            </div>
+          </div>`;
+  });
+  let forecastElement = document.querySelector("#weather-forecasts");
+  forecastElement.innerHTML = forecastHtml;
+}
 let inputElement = document.querySelector("#search-form");
 inputElement.addEventListener("submit", searchButton);
-
-searchCity("paris");
