@@ -58,10 +58,9 @@ function getTheforecast(city) {
   axios(apiUrl).then(displayFive);
 }
 function displayFive(response) {
-  let days = ["tue", "wed", "thu", "fri", "sat"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `
@@ -69,7 +68,9 @@ function displayFive(response) {
             <div class="weather-forecast-date">${day}</div>
             <div class="weather-forecast-emoji">😊</div>
             <div class="forecast">
-              <div class="weather-forecast-degress"><strong>15°</strong></div>
+              <div class="weather-forecast-degress"><strong>${Math.round(
+                day.temperature.maximum
+              )}</strong></div>
               <div class="weather-forecast-degress">°5</div>
             </div>
           </div>`;
